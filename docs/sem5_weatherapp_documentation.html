@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Interactive Weather Stations Web App Documentation</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Tailwind CSS + config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0FF',
+            accent: '#8B5CF6',
+            bgstart: '#1A1A1A',
+            bgend: '#000000'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-gradient-to-br from-bgstart to-bgend text-white font-sans overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur z-20">
+    <div class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="../index.html" class="text-xl font-bold hover:text-primary">Laurin Kimmich</a>
+      <div class="space-x-6">
+        <a href="../index.html#home" class="hover:text-primary">Home</a>
+        <a href="../index.html#projects" class="hover:text-primary">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer -->
+  <div class="h-16"></div>
+
+  <!-- Main content container -->
+  <main class="max-w-screen-2xl mx-auto p-8 bg-gray-800 bg-opacity-80 rounded-lg shadow-xl my-12 space-y-8">
+    <h1 class="text-4xl font-bold text-primary">Interactive Weather Stations Web App</h1>
+
+    <!-- Overview -->
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Overview</h2>
+      <p>
+        Developed a full stack web application for visualizing and analyzing GHCND weather station data. The
+        app displays stations on an interactive map, supports spatial filters (bounding box, radius search around
+        user chosen coordinates), and temporal filters (year range). Each station’s details are available in pop up
+        panels showing annual and seasonal average temperatures in tables and interactive charts.
+      </p>
+    </section>
+
+    <!-- Preview Images (click to enlarge) -->
+    <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+      <img
+        src="/assets/WeatherApp.gif"
+        alt="Weather App Animated Preview"
+        class="lightbox-trigger w-full lg:w-[48%] h-auto rounded-lg shadow-lg cursor-pointer"
+      />
+      <img
+        src="/assets/App-Startseite.PNG"
+        alt="Weather App Homepage Screenshot"
+        class="lightbox-trigger w-full lg:w-[48%] h-auto rounded-lg shadow-lg cursor-pointer"
+      />
+    </div>
+
+    <!-- Tech Stack -->
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Tech Stack</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Frontend:</strong> HTML5, CSS3, Vanilla JavaScript
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Leaflet.js &amp; Leaflet.markercluster for map rendering and clustering</li>
+            <li>Chart.js for line charts of yearly and seasonal temperature trends</li>
+          </ul>
+        </li>
+        <li><strong>Backend:</strong> Node.js with Express.js, MongoDB accessed via the official mongodb driver
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Aggregation pipelines to compute year‑ and season‑based averages</li>
+          </ul>
+        </li>
+        <li><strong>Containerization &amp; Infrastructure:</strong> Docker &amp; Docker Compose
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Custom MongoDB seed container that automatically imports a .tar.gz via mongorestore</li>
+            <li>JSON-based collection updates via mongoimport</li>
+            <li>CI‑friendly workflow: full container rebuild on code or data changes</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Key Features -->
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Key Features</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Dynamic Map Loading</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Stations reload on map move or zoom</li>
+            <li>Station list table synced with current viewport</li>
+          </ul>
+        </li>
+        <li><strong>Radius &amp; Coordinate Search</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Click to set center and radius; returns nearest N stations</li>
+            <li>Manual lat/lng entry with adjustable station count</li>
+          </ul>
+        </li>
+        <li><strong>Year Range Filter</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Show only stations active in a specified year interval</li>
+          </ul>
+        </li>
+        <li><strong>Detail Pop‑ups with Tabs</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li><em>Yearly:</em> min/max/avg per year tables</li>
+            <li><em>Seasonal:</em> averages (Winter, Spring, Summer, Fall)</li>
+            <li><em>Graph:</em> interactive Chart.js line chart</li>
+          </ul>
+        </li>
+        <li><strong>Usability Enhancements</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Loading spinner during fetches</li>
+            <li>Alert dialogs when no results found</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Development Workflow -->
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Development Workflow</h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li><strong>Data Seeding</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Export collections via mongodump</li>
+            <li>Package into mongo-seed.tar.gz</li>
+          </ul>
+        </li>
+        <li><strong>Docker Build &amp; Init</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li><code>docker-compose up --build</code>
+              <ul class="list-disc list-inside ml-4 space-y-1">
+                <li>MongoDB container restores seed</li>
+                <li>Backend runs initIndexes.js</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Data Updates</strong>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Import new readings via mongoimport</li>
+            <li>Rebuild seed archive &amp; containers</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-6">
+    <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500">&copy; 2025 Laurin Kimmich. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="https://github.com/LaurinK8?tab=repositories" target="_blank" class="hover:text-white">
+          <i class="fab fa-github fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/laurin-kimmich-a24616261/" target="_blank" class="hover:text-white">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox-overlay"
+       class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 hidden z-50">
+    <img id="lightbox-img" src="" alt="Large preview" class="max-w-full max-h-full rounded-lg shadow-lg" />
+  </div>
+
+  <script>
+    document.querySelectorAll('.lightbox-trigger').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox-overlay').classList.remove('hidden');
+      });
+    });
+    document.getElementById('lightbox-overlay')
+      .addEventListener('click', () => {
+        document.getElementById('lightbox-overlay').classList.add('hidden');
+      });
+  </script>
+</body>
+</html>

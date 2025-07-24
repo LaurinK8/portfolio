@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Capstone &amp; Bachelor’s Thesis Documentation</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Tailwind CSS + config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0FF',
+            accent: '#8B5CF6',
+            bgstart: '#1A1A1A',
+            bgend: '#000000',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-gradient-to-br from-bgstart to-bgend text-white font-sans overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur z-20">
+    <div class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="../index.html" class="text-xl font-bold hover:text-primary">Laurin Kimmich</a>
+      <div class="space-x-6">
+        <a href="../index.html#home" class="hover:text-primary">Home</a>
+        <a href="../index.html#projects" class="hover:text-primary">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer -->
+  <div class="h-16"></div>
+
+  <!-- Main content container -->
+  <main class="max-w-screen-2xl mx-auto p-8 bg-gray-800 bg-opacity-80 rounded-lg shadow-xl my-12 space-y-12">
+    <h1 class="text-4xl font-bold text-primary">Capstone &amp; Bachelor’s Thesis</h1>
+
+    <!-- Bachelor Thesis Section -->
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Bachelor Thesis</h2>
+      <p>
+        The Bachelor Thesis presents a user-centered UX concept for the dormakaba IT Self Service Portal, grounded in ISO 9241-11 and 9241-210 standards. After an in-depth analysis—comprising a company-wide IT Townhall survey (108 responses) and expert interviews with the Service Desk—key pain points were identified, including unclear categorization, opaque ticket routing, insufficient training, and cultural barriers to formal processes. Based on these insights, three personas were developed to drive design decisions.
+      </p>
+      <p>
+        Nine targeted UX measures were then conceived and detailed: an intuitive homepage with a guided tour; enhanced search functionality; multilingual support; a robust, user‑friendly Knowledge Base; rule‑based Virtual Agent chatbot; Live Agent chat for escalation; and two AI assistants: NowAssist for end users and an AI Agent for support staff. These were organized within a scalable, hybrid architecture that emphasizes iterative development and cross‑team collaboration.
+      </p>
+      <p>
+        A thorough cost–benefit analysis revealed substantial savings: automation via NowAssist and AI Agent could reduce external service costs and manual processing. The thesis concludes that a systemic, AI‑augmented UX strategy not only enhances productivity and satisfaction but also positions dormakaba for future digital differentiation, with recommended next steps including personalized interfaces, advanced metrics, and predictive AI models.
+      </p>
+    </section>
+
+    <!-- Project Work 2 Section -->
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Project Work 2</h2>
+      <p>
+        This Project Work 2 focuses on optimizing the ServiceNow search function for dormakaba, beginning with theoretical foundations of search engines, ServiceNow’s Zing and AI search options, and relevance boosting techniques. The project initiation phase defined clear objectives: improve result relevance, increase user efficiency, and lay the groundwork for future modules, supported by a stakeholder analysis and risk matrix.
+      </p>
+      <p>
+        A detailed functional and weakness analysis of the existing ServiceNow search revealed issues such as missing synonyms, unweighted fields, and the absence of result improvement rules. The improvement concept introduced a custom synonym dictionary, expanded text index configurations, field weighting adjustments, and agile‑driven “boost” rules. Implementation occurred in iterative epics, followed by unit and integration tests, which confirmed that the first “Laptop” result moved from position 30 to the top 5 and that search precision increased from 67 to 78 relevant hits per query.
+      </p>
+      <p>
+        The Go Live process, managed through weekly Release Clearance Meetings, ensured structured deployment of each enhancement. The project successfully delivered more precise, user‑friendly search experiences and fostered continuous improvement cycles. Beyond technical gains, the work provided valuable professional growth—enhancing project management, stakeholder communication, and adaptability—while identifying future extensions such as AI chatbots for search assistance.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-6">
+    <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500">&copy; 2025 Laurin Kimmich. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="https://github.com/LaurinK8?tab=repositories" target="_blank" class="hover:text-white">
+          <i class="fab fa-github fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/laurin-kimmich-a24616261/" target="_blank" class="hover:text-white">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Overlay (no images in this doc, but included for consistency) -->
+  <div id="lightbox-overlay"
+       class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 hidden z-50">
+    <img id="lightbox-img" src="" alt="Large preview" class="max-w-full max-h-full rounded-lg shadow-lg" />
+  </div>
+
+  <script>
+    document.querySelectorAll('.lightbox-trigger').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox-overlay').classList.remove('hidden');
+      });
+    });
+    document.getElementById('lightbox-overlay')
+      .addEventListener('click', () => {
+        document.getElementById('lightbox-overlay').classList.add('hidden');
+      });
+  </script>
+</body>
+</html>

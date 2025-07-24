@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Personal Interests Documentation</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Tailwind CSS + config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0FF',
+            accent: '#8B5CF6',
+            bgstart: '#1A1A1A',
+            bgend: '#000000',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-gradient-to-br from-bgstart to-bgend text-white font-sans overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur z-20">
+    <div class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="../index.html" class="text-xl font-bold hover:text-primary">Laurin Kimmich</a>
+      <div class="space-x-6">
+        <a href="../index.html#home" class="hover:text-primary">Home</a>
+        <a href="../index.html#projects" class="hover:text-primary">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer -->
+  <div class="h-16"></div>
+
+  <!-- Main content container -->
+  <main class="max-w-screen-2xl mx-auto p-8 bg-gray-800 bg-opacity-80 rounded-lg shadow-xl my-12 space-y-8">
+    <h1 class="text-4xl font-bold text-primary">Personal Interests</h1>
+
+    <section class="prose prose-invert space-y-4">
+      <h2 class="text-2xl font-semibold text-accent">Overview</h2>
+      <p>
+        I am passionate about building applications that are visually appealing, intuitive, and interactive. My strength lies in frontend development, where I enjoy designing how things look and feel, creating user-friendly and engaging interfaces. While I have experience in backend technologies like Node.js, my natural focus is on the visual and interactive side of web applications. I enjoy creative problem-solving, particularly when it comes to improving the user experience through thoughtful design and smooth interactions.
+      </p>
+      <p>
+        Most of my experience so far has been in web development, where I’ve worked with technologies such as Leaflet for interactive maps and Chart.js for data visualization. I often work with raw HTML, CSS, and JavaScript but am eager to deepen my knowledge of modern frameworks to build more dynamic and scalable solutions.
+      </p>
+      <p>
+        At the same time, I’ve enjoyed exploring mobile app development, such as my logging app for dormakaba and a current Maps App project at university. This has sparked my interest in expanding my skill set to native app development while continuing to strengthen my expertise in web technologies.
+      </p>
+      <p>
+        Looking ahead, I see myself as a full-stack developer with a strong frontend focus, combining design-driven thinking with the technical skills needed to deliver seamless, end-to-end digital experiences.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-6">
+    <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500">&copy; 2025 Laurin Kimmich. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="https://github.com/LaurinK8?tab=repositories" target="_blank" class="hover:text-white">
+          <i class="fab fa-github fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/laurin-kimmich-a24616261/" target="_blank" class="hover:text-white">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Overlay (included for consistency) -->
+  <div id="lightbox-overlay"
+       class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 hidden z-50">
+    <img id="lightbox-img" src="" alt="Large preview" class="max-w-full max-h-full rounded-lg shadow-lg" />
+  </div>
+
+  <script>
+    // Lightbox logic (no triggers here but kept for uniformity)
+    document.querySelectorAll('.lightbox-trigger').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox-overlay').classList.remove('hidden');
+      });
+    });
+    document.getElementById('lightbox-overlay')
+      .addEventListener('click', () => {
+        document.getElementById('lightbox-overlay').classList.add('hidden');
+      });
+  </script>
+</body>
+</html>
